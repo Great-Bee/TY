@@ -62,7 +62,10 @@ public class HomeController implements ExceptionCode {
     private static final String BUZZ = "buzz";
 
     @RequestMapping(value = "/ty/login", method = {RequestMethod.POST, RequestMethod.GET})
-    public void login(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public
+    @ResponseBody
+    Response login(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        Response tyResponse = new Response();
         HttpSession session = request.getSession();
         try {
             String username = request.getParameter("userName");
@@ -133,12 +136,8 @@ public class HomeController implements ExceptionCode {
             condition.addCondition(statusCon);
             List<App> onlineApps = tyDriver.getAppManager().list(condition);
 
-//            String hostUrl = request.getRequestURL().toString().replace("ty/login", "#/home");
             if (CollectionUtil.isInvalid(onlineApps)) {
-//                response.setContentType("text/html;charset=utf-8");
-//                response.sendRedirect("/templates/forward.html");
-                response.sendRedirect("/#/home");
-                return;
+                return tyResponse;
             }
             //构造 存到session中的应用信息
             JSONArray apps = new JSONArray();
@@ -173,21 +172,15 @@ public class HomeController implements ExceptionCode {
             //将资源信息存到缓存中
             session.setAttribute(SessionUtils.E_SESSION_USER_OPEN_APP_RESOURCE_KEY, JSONArray.toJSONString(apps));
 
-            //跳转到首页
-//            response.sendRedirect("/#/home");
-            response.setContentType("text/html;charset=utf-8");
-            response.sendRedirect("/templates/forward.html");
-            return;
         } catch (Exception e) {
             logger.error("login user permitions error," + e.getMessage());
             logger.error("login user permitions error," + e);
             e.printStackTrace();
-            Response tyResponse = new Response();
             tyResponse.setCode(500);
             tyResponse.setMessage(e.getMessage());
             tyResponse.setOk(false);
-            response.getWriter().write(JSON.toJSONString(tyResponse));
         }
+        return tyResponse;
     }
 
     @RequestMapping(value = "/ty/openApps")
