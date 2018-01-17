@@ -233,7 +233,7 @@
         <dependency>
             <groupId>greatbee</groupId>
             <artifactId>ty-server-core</artifactId>
-            <version>1.0.104</version>
+            <version>1.0.105</version>
         </dependency>
     </dependencies>
 
