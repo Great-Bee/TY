@@ -15,27 +15,9 @@
 
 
 <script type="text/javascript">
-	var TY_Client_Domain = "https://static1.mmall.com/p-ty-client/";
-    var iframe = document.createElement("iframe");
-    iframe.src = TY_Client_Domain + "hash.html?time=" + new Date().getTime();
-    iframe.id = "ty";
-    iframe.width = 0;
-    iframe.height = 0;
-    iframe.style.display = 'none';
-    document.body.appendChild(iframe);
-
-    iframe.onload = function (e) {
-        var STATIC_HASH = "staticHash";
-        //解决跨域问题，用cookie来实现
-        function getCookie(name) {
-            var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
-            if (arr = document.cookie.match(reg))
-                return unescape(arr[2]);
-            else
-                return null;
-        }
-        var hash = getCookie(STATIC_HASH);
-        console.log("hash=" + hash);
+	var TY_Client_Domain = "https://greatbee-ty.oss-cn-hangzhou.aliyuncs.com/client/";
+    window.loadTY = function(hash){
+        console.log("load hash=" + hash);
 
         function addLink(url) {
             var link = document.createElement("link");
@@ -55,6 +37,29 @@
 
         addLink(TY_Client_Domain + "main." + hash + ".css");
         addScript(TY_Client_Domain + "main." + hash + ".js");
-    };
+    }
 
+    window.loadTY("f5179edefcff1821e698");
+
+    // var iframe = document.createElement("iframe");
+    // iframe.src = TY_Client_Domain + "hash.html?time=" + new Date().getTime();
+    // iframe.id = "ty";
+    // iframe.width = 0;
+    // iframe.height = 0;
+    // iframe.style.display = 'none';
+    // document.body.appendChild(iframe);
+
+    // iframe.onload = function (e) {
+        // var STATIC_HASH = "staticHash";
+        // //解决跨域问题，用cookie来实现
+        // function getCookie(name) {
+        //     var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+        //     if (arr = document.cookie.match(reg))
+        //         return unescape(arr[2]);
+        //     else
+        //         return null;
+        // }
+        // var hash = iframe.loadHashKey();
+        // _load(hash):
+    // };
 </script>
