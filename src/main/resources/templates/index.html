@@ -35,11 +35,16 @@
             document.body.appendChild(script);
         }
 
-        addLink(TY_Client_Domain + "main." + hash + ".css");
-        addScript(TY_Client_Domain + "main." + hash + ".js");
+        if(hash && hash.length>0){
+            addLink(TY_Client_Domain + "main." + hash + ".css");
+            addScript(TY_Client_Domain + "main." + hash + ".js");
+        }else{
+            addLink(TY_Client_Domain + "main.css");
+            addScript(TY_Client_Domain + "main.js");
+        }
     }
 
-    window.loadTY("f5179edefcff1821e698");
+    window.loadTY("6299165b1e7efda67eef");
 
     // var iframe = document.createElement("iframe");
     // iframe.src = TY_Client_Domain + "hash.html?time=" + new Date().getTime();
