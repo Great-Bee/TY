@@ -12,9 +12,9 @@
 
     <bean id="tyDataSource" class="org.apache.tomcat.jdbc.pool.DataSource">
         <property name="driverClassName" value="${ty.jdbc.mysql.Driver}"></property>
-        <property name="url" value="${ty.master.connection}"></property>
-        <property name="username" value="${ty.master.username}"></property>
-        <property name="password" value="${ty.master.password}"></property>
+        <property name="url" value="${db.connection}"></property>
+        <property name="username" value="${db.connection.username}"></property>
+        <property name="password" value="${db.connection.password}"></property>
         <!--公共配置属性-->
         <property name="maxActive" value="${ty.tomcat.jdbc.pool.maxActive}"></property>
         <property name="initialSize" value="${ty.tomcat.jdbc.pool.initialSize}"></property>
