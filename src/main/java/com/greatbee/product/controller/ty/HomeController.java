@@ -61,18 +61,6 @@ public class HomeController implements ExceptionCode {
 
     private static final String BUZZ = "buzz";
 
-    @RequestMapping("/ty/logout")
-    public  void  logOut(HttpServletRequest request,HttpServletResponse response) throws IOException {
-        try {
-            HttpSession session = request.getSession(false);
-            session.invalidate();
-        }catch (Exception e){
-
-        }
-        Response tyResponse = new Response();
-        response.getWriter().write(JSON.toJSONString(tyResponse));
-    }
-
     @RequestMapping(value = "/ty/login", method = {RequestMethod.POST, RequestMethod.GET})
     public
     @ResponseBody
