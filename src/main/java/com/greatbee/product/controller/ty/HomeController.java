@@ -190,7 +190,7 @@ public class HomeController implements ExceptionCode {
         Response tyResponse = new Response();
         if(!_checkLogin(request)){
             tyResponse.setOk(false);
-            tyResponse.setCode(400);
+            tyResponse.setCode(-400);
             return  tyResponse;
         }
         String apps = SessionUtils.getStringValue(request, SessionUtils.E_SESSION_USER_OPEN_APP_RESOURCE_KEY);
@@ -215,7 +215,7 @@ public class HomeController implements ExceptionCode {
         Response tyResponse = new Response();
         if(!_checkLogin(request)){
             tyResponse.setOk(false);
-            tyResponse.setCode(400);
+            tyResponse.setCode(-400);
             return  tyResponse;
         }
         if(StringUtil.isInvalid(appAlias)){
