@@ -188,7 +188,7 @@ public class HomeController implements ExceptionCode {
     @ResponseBody
     Response openApps(HttpServletRequest request, HttpServletResponse response) {
         Response tyResponse = new Response();
-        if(_checkLogin(request)){
+        if(!_checkLogin(request)){
             tyResponse.setOk(false);
             tyResponse.setCode(400);
             return  tyResponse;
@@ -213,7 +213,7 @@ public class HomeController implements ExceptionCode {
     @ResponseBody
     Response resources(HttpServletRequest request,@PathVariable String appAlias) throws LegoException {
         Response tyResponse = new Response();
-        if(_checkLogin(request)){
+        if(!_checkLogin(request)){
             tyResponse.setOk(false);
             tyResponse.setCode(400);
             return  tyResponse;
@@ -339,7 +339,12 @@ public class HomeController implements ExceptionCode {
      * @return
      */
     private boolean _checkLogin(HttpServletRequest request){
-        HttpSession session = request.getSession();
-        return session != null || session.getAttribute(SessionUtils.TY_SESSION_CONFIG_USER) != null;
+        HttpSession session = request.getSession(false);
+        if(session != null || session.getAttribute(SessionUtils.TY_SESSION_CONFIG_USER) != null){
+            System.out.print("TY_SESSION_CONFIG_USER:" + session.getAttribute(SessionUtils.TY_SESSION_CONFIG_USER));
+            return  true;
+        }else{
+            return  false;
+        }
     }
 }
