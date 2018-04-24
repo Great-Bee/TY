@@ -60,12 +60,12 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        // 注册拦截器
-        InterceptorRegistration ir = registry.addInterceptor(new UserSecurityInterceptor());
-        // 配置拦截的路径
-        ir.addPathPatterns("/**");
-        // 配置不拦截的路径
-        ir.excludePathPatterns("/","/**.html","/ty-login","/ty/login","/**/ty-login","/config/ty-login","/config/ty-change-pwd","/config/load-page-data");
+//        // 注册拦截器
+//        InterceptorRegistration ir = registry.addInterceptor(new UserSecurityInterceptor());
+//        // 配置拦截的路径
+//        ir.addPathPatterns("/**");
+//        // 配置不拦截的路径
+//        ir.excludePathPatterns("/","/**.html","/ty-login","/ty/login","/**/ty-login","/config/ty-login","/config/ty-change-pwd","/config/load-page-data");
     }
 
     @Override
