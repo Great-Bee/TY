@@ -188,6 +188,11 @@ public class HomeController implements ExceptionCode {
     @ResponseBody
     Response openApps(HttpServletRequest request, HttpServletResponse response) {
         Response tyResponse = new Response();
+        if(_checkLogin(request)){
+            tyResponse.setOk(false);
+            tyResponse.setCode(400);
+            return  tyResponse;
+        }
         String apps = SessionUtils.getStringValue(request, SessionUtils.E_SESSION_USER_OPEN_APP_RESOURCE_KEY);
         if(StringUtil.isValid(apps)){
             JSONArray appArray = JSONArray.parseArray(apps);
@@ -208,6 +213,11 @@ public class HomeController implements ExceptionCode {
     @ResponseBody
     Response resources(HttpServletRequest request,@PathVariable String appAlias) throws LegoException {
         Response tyResponse = new Response();
+        if(_checkLogin(request)){
+            tyResponse.setOk(false);
+            tyResponse.setCode(400);
+            return  tyResponse;
+        }
         if(StringUtil.isInvalid(appAlias)){
             throw new LegoException("参数无效",600001);
         }
@@ -324,21 +334,12 @@ public class HomeController implements ExceptionCode {
     }
 
     /**
-     * 清除所有cookie
-     *
+     * 判断是否登录
      * @param request
-     * @param response
+     * @return
      */
-    private void clearAllCookie(HttpServletRequest request, HttpServletResponse response) {
-        Cookie[] cookies = request.getCookies();
-        for (Cookie cookie : cookies) {
-            cookie.setMaxAge(0);
-            cookie.setPath("/");
-            response.addCookie(cookie);
-        }
+    private boolean _checkLogin(HttpServletRequest request){
+        HttpSession session = request.getSession();
+        return session != null || session.getAttribute(SessionUtils.TY_SESSION_CONFIG_USER) != null;
     }
-
-
-
-
 }
