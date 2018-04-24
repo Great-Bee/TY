@@ -340,7 +340,7 @@ public class HomeController implements ExceptionCode {
      */
     private boolean _checkLogin(HttpServletRequest request){
         HttpSession session = request.getSession(false);
-        if(session != null || session.getAttribute(SessionUtils.TY_SESSION_CONFIG_USER) != null){
+        if(session != null && session.getAttribute(SessionUtils.TY_SESSION_CONFIG_USER) != null){
             System.out.print("TY_SESSION_CONFIG_USER:" + session.getAttribute(SessionUtils.TY_SESSION_CONFIG_USER));
             return  true;
         }else{
