@@ -48,27 +48,14 @@
         }
     }
 
-    window.loadTY("e74f2a2eb280f1a7260d");
+//    window.loadTY("e74f2a2eb280f1a7260d");
 
-    // var iframe = document.createElement("iframe");
-    // iframe.src = TY_Client_Domain + "hash.html?time=" + new Date().getTime();
-    // iframe.id = "ty";
-    // iframe.width = 0;
-    // iframe.height = 0;
-    // iframe.style.display = 'none';
-    // document.body.appendChild(iframe);
-
-    // iframe.onload = function (e) {
-        // var STATIC_HASH = "staticHash";
-        // //解决跨域问题，用cookie来实现
-        // function getCookie(name) {
-        //     var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
-        //     if (arr = document.cookie.match(reg))
-        //         return unescape(arr[2]);
-        //     else
-        //         return null;
-        // }
-        // var hash = iframe.loadHashKey();
-        // _load(hash):
-    // };
+    var currentDomain = window.location.protocol+"//"+window.location.host;
+    var iframe = document.createElement("iframe");
+    iframe.src = TY_Client_Domain + "hash.html?time=" + new Date().getTime() + "&domain="+ currentDomain;
+    iframe.id = "ty";
+    iframe.width = 0;
+    iframe.height = 0;
+    iframe.style.display = 'none';
+    document.body.appendChild(iframe);
 </script>
