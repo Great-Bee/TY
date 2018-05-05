@@ -6,7 +6,7 @@
 
     <groupId>greatbee</groupId>
     <artifactId>ty</artifactId>
-    <version>1.0.12-SNAPSHOT</version>
+    <version>1.0.13-SNAPSHOT</version>
 
     <name>ty</name>
     <packaging>jar</packaging>
