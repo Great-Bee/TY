@@ -6,7 +6,7 @@
 
     <groupId>greatbee</groupId>
     <artifactId>ty</artifactId>
-    <version>1.0.13-SNAPSHOT</version>
+    <version>1.0.14-SNAPSHOT</version>
 
     <name>ty</name>
     <packaging>jar</packaging>
@@ -235,7 +235,7 @@
         <dependency>
             <groupId>greatbee</groupId>
             <artifactId>ty-server-core</artifactId>
-            <version>1.2.25</version>
+            <version>1.2.29</version>
         </dependency>
     </dependencies>
 
